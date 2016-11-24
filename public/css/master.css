@@ -1,0 +1,35 @@
+/*master.css*/
+
+.home h1 {
+	color: darkgray;
+}
+
+.home p {
+	color: steelblue;
+}
+
+.posts .body {
+	white-space: pre-line;	
+}
+
+.posts .post-delete {
+	display: inline-block;	
+}
+
+.posts h2 {
+	color: steelblue;
+	text-align: center;
+}
+
+.posts {
+	width: 600px;
+}
+
+.posts-show .post-info {
+	text-align: right;	
+	margin-bottom: 30px;
+}
+
+.posts-show .post-body {
+	margin-bottom: 50px;	
+}
