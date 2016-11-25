@@ -10,7 +10,7 @@ var methodOverride = require('method-override');
 // var mongoLocal = "mongodb://localhost/contacts"
 //mongoose.connect(mongoLocal);
 
-var mongoLabURI = "mongodb://test:test@ds029486.mlab.com:29486/heroku_qls8r2s0"
+var mongoLabURI = process.env.MONGODB_URI;
 mongoose.connect(mongoLabURI);
 
 var db = mongoose.connection;
