@@ -7,11 +7,11 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override'); 
 
 // DB Connection
-// var mongoLocal = "mongodb://localhost/contacts"
-//mongoose.connect(mongoLocal);
+var mongoLocal = "mongodb://localhost/contacts"
+mongoose.connect(mongoLocal);
 
-var mongoLabURI = process.env.MONGODB_URI;
-mongoose.connect(mongoLabURI);
+//var mongoLabURI = process.env.MONGODB_URI;
+//mongoose.connect(mongoLabURI);
 
 var db = mongoose.connection;
 
@@ -33,6 +33,7 @@ app.use(methodOverride('_method'));
 // Routes
 app.use('/', require('./routes/home'));
 app.use('/posts', require('./routes/posts'));
+app.use('/tasks', require('./routes/tasks'));
 app.use(express.static(__dirname + '/public'));
 
 var port = process.env.PORT || 3000;

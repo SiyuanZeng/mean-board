@@ -1,0 +1,29 @@
+/*tasks.css*/
+
+.tasks h1 {
+	color: orangered;
+	text-align: center;
+}
+
+.tasks .quote p {
+	font-style: italic;	
+	text-align: center;	
+	font-size: 1em;
+}
+
+.tasks .quote footer {
+	font-style: italic;	
+	text-align: center;		
+}
+
+.tasks .add-task-form {
+	text-align: center;
+}
+
+/*.tasks .add-task-control {
+	margin-bottom: 10px;
+}*/
+
+#my_task {
+	width: 300px;
+}

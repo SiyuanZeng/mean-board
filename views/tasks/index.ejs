@@ -1,0 +1,82 @@
+<!-- index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">	
+	<% include ../partials/head %>
+	<link rel="stylesheet" href="/css/tasks.css">
+</head>
+<body>
+	<% include ../partials/nav %>
+	
+	<div class="tasks tasks-index container">		
+		<div class="jumbotron">
+			<h1>To-Do List</h1>
+			<blockquote class="quote">
+				<p>Never leave that until tomorrow which you can do today.<br />
+				   (오늘 할 일을 내일로 미루지 말라.)</p>
+				<footer>Benjamin Franklin</footer>
+			</blockquote>
+			<div class="add-task-form">
+				<form action="/tasks" method="post" class="form-inline">
+					<input type="hidden" class="form-control" name="status" id="status" value="to-do" />					
+					<input type="text" class="form-control" name="my_task" id="my_task" placeholder="Hey! What is your To-Do work?" />
+					<button class="btn btn-primary">Add new task</button>					
+				</form>
+			</div>
+		</div>
+		<div class="tasks tasks-list">
+			<div class="row">
+				<div class="col-sm-4">
+					<ul class="list-group">
+						<li class="list-group-item active">To-Do<span class="badge"><%= tasks.todoTasks.length %></span></li>
+						<% tasks.todoTasks.forEach(function(task) { %>
+						<div class="input-group">
+							<li class="list-group-item"><%= task.my_task %></li>
+							<span class="input-group-btn">	
+								<form action="/tasks/<%= task._id %>?_method=put" method="post">
+									<input type="hidden" name="status" value="in-progress">
+									<button class="btn btn-success" type="submit"><strong><span class="glyphicon glyphicon-check" aria-hidden="true"></span></strong></button>					
+								</form>
+							</span>
+						</div>
+						<% }) %>
+					</ul>
+				</div>
+				<div class="col-sm-4">
+					<ul class="list-group">
+						<li class="list-group-item active">In-Progress<span class="badge"><%= tasks.inprogressTasks.length %></span></li>
+						<% tasks.inprogressTasks.forEach(function(task) { %>
+						<div class="input-group">
+							<li class="list-group-item"><%= task.my_task %></li>
+							<span class="input-group-btn">	
+								<form action="/tasks/<%= task._id %>?_method=put" method="post">
+									<input type="hidden" name="status" value="done">
+									<button class="btn btn-success" type="submit"><strong><span class="glyphicon glyphicon-check" aria-hidden="true"></span></strong></button>					
+								</form>
+							</span>
+						</div>
+						<% }) %>
+					</ul>
+				</div>
+				<div class="col-sm-4">
+					<ul class="list-group">
+						<li class="list-group-item active">Done<span class="badge"><%= tasks.doneTasks.length %></span></li>
+						<% tasks.doneTasks.forEach(function(task) { %>
+						<div class="input-group">
+							<li class="list-group-item"><%= task.my_task %></li>
+							<span class="input-group-btn">	
+								<form action="/tasks/<%= task._id %>?_method=delete" method="post">								
+									<button class="btn btn-danger" type="submit"><strong><span class="glyphicon glyphicon-check" aria-hidden="true"></span></strong></button>					
+								</form>
+							</span>
+						</div>
+						<% }) %>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>		
+</body>
+</html>
