@@ -7,7 +7,7 @@ var router = express.Router();
 
 // Index
 router.get('/', function(req, res) {
-	Post.find({}, function(err, posts) {
+	Post.find({}).sort({createdAt: -1}).exec(function(err, posts) {
 		if (err) res.json(err);
 		res.render('posts/index', {posts: posts});
 	});
